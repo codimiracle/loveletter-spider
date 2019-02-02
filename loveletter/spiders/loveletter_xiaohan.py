@@ -11,7 +11,7 @@ class LoveLetterSpider(scrapy.Spider):
     wechat_appmsg_token = '994_p9KdAkZM2FDJu7sEKyzD3SE9T1weJADPi394yQ~~&x5=0'
     allowed_domains = ['mp.weixin.qq.com']
     start_urls = [
-        # xiaohan wechat account json format home page.
+        # xiaohan wechat subscription json format home page.
         'https://mp.weixin.qq.com/mp/profile_ext?action=getmsg&__biz=MjM5MjEyODU2MA==&f=json&offset=0&count=10&is_ok=1&scene=124&uin=MTUyNzUyMTA3Mw%3D%3D&key=' + wechat_key + '&pass_ticket=K9t7oVL4QBgxPtPRwoUk5g2YTodNqOatojRvwwPSry%2FiDAqqGcW2R5WMIh2MuPzM&wxtoken=&appmsg_token='+ wechat_appmsg_token +'&f=json',
         # before 41 episode, 42 episode is deleted.
         'http://mp.weixin.qq.com/s?__biz=MjM5MjEyODU2MA==&amp;mid=2651599455&amp;idx=1&amp;sn=f91bd3a391d41cdc53689fc0deefeb36&amp;chksm=bd5399008a24101608d40911744d61596f8afb97a05dd2e9c188d12eb95b0275cbff42ceb5cb#rd'
