@@ -6,7 +6,7 @@
 # https://doc.scrapy.org/en/latest/topics/loaders.html
 
 from scrapy.loader import ItemLoader
-from items import LoveLetter, LoveTheme
+from loveletter.items import LoveLetter, LoveTheme
 
 class LoveLetterLoader(ItemLoader):
     def __init__(self, response=None):
