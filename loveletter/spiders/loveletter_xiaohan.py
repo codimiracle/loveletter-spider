@@ -2,6 +2,7 @@
 import scrapy
 import time
 import json
+import re
 from loveletter.parsers import CardStyleParser, BoxStyleParser, TextStyleParser
 from loveletter.loaders import LoveLetterLoader, LoveThemeLoader
 
@@ -46,7 +47,12 @@ class LoveLetterSpider(scrapy.Spider):
             for clazz in self.parser_classes:
                 parser = clazz(response)
                 if parser.ismatched():
+                    raw_intro = response.xpath('//script[contains(., "msg_title")]').extract_first()
+                    intro = dict(re.compile(r'var\s+(msg.+|ct)\s+=\s+"(.+?)";').findall(raw_intro))
+                    self.logger.debug('intro data: %s', intro)
                     for result in parser.extract():
+                        result['subject'] = intro['msg_desc']
+                        result['publishTime'] = int(intro['ct']) * 1000
                         yield result
                     if not parser.isexcepted():
                         self.logger.error('excepted %d items, but %d crawled', parser.excepted_count(), parser.parsed_count())
