@@ -53,6 +53,7 @@ class CardStyleParser(Parser):
                     'ep': title_raw.extract_first().strip(),
                     'to': (address_raw[address_raw.find('：') + 1:address_raw.rfind('From：')]).strip(),
                     'from': (address_raw[address_raw.rfind('：') + 1:]).strip(),
+                    'index': self.count,
                     'content': (''.join(set(extracted_letter_body).difference(set(extracted_letter_address)))).strip(),
                     'link': self.response.url
                 }
@@ -125,6 +126,7 @@ class BoxStyleParser(Parser):
                         'ep': title_raw.extract_first().strip(),
                         'to': result.group(1).strip(),
                         'from': result.group(3).strip(),
+                        'index': self.count,
                         'content': content,
                         'link': self.response.url
                     }
@@ -171,6 +173,7 @@ class TextStyleParser(Parser):
                         'ep': title_raw.extract_first().strip(),
                         'to': result.group(1).strip(),
                         'from': result.group(3).strip(),
+                        'index': self.count,
                         'content': content,
                         'link': self.response.url
                     }
