@@ -43,7 +43,7 @@ class CardStyleParser(Parser):
         if self.ismatched():
             title_raw = self.response.css('title::text')
             for letter_raw in self.letters_raw:
-                extracted_letter_address = letter_raw.css('strong ::text').extract()
+                extracted_letter_address = letter_raw.css('strong ::text, p[style*="text-align: right;"] span::text').extract()
                 address_raw = ''.join(extracted_letter_address)
                 self.logger.debug('address data: %s', extracted_letter_address)
                 extracted_letter_body = letter_raw.css('section ::text').extract()
