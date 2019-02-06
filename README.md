@@ -19,5 +19,5 @@ https://mp.weixin.qq.com/mp/profile_ext?action=getmsg&__biz=MjM5MjEyODU2MA==&f=j
 and then the spider will be auto detect and fetch latest loveletter wall page.
 
 ofcourse, you can just put the last loveletter wall page link on it. 
-# global
+# aims
 1. servitization
